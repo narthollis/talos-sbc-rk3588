@@ -13,7 +13,7 @@ vars:
   rkbin_sha256: 9df375316869daadbf874410f4097591c32cc2dca5a30fd328ea7a1cd8f8b6a8
   rkbin_sha512: 715253b5ef5c7fbcbce8478d4dea5ad3d1b4b738da437b5f0e9b31eed20f9bcb86cab082e4c04c69b42b6ffcc2cbb1a31079b33b968bb76826ff0dd4f83043e1
 
-  # renovate: datasource=gitlab-tags extractVersion=^v(?<version>.*)$ depName=hardware-enablement/rockchip-3588/linux registryUrl=gitlab.collabora.com
+  # renovate: datasource=gitlab-tags extractVersion=^v(?<version>.*)$ depName=hardware-enablement/rockchip-3588/linux registryUrl=https://gitlab.collabora.com
   linux_mainline_version: 6.9.0
   linux_mainline_ref: 23bb9c65a88c114bbe945b7ef5366bb02d3d9b80
   linux_mainline_sha256: e02aa92d7f7aa29f97967a87854e8a3d7efbfc46eecf40573372f209699f8d80
