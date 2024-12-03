@@ -1,23 +1,26 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
+        "mergeConfidence:all-badges",
         ":dependencyDashboard",
         ":gitSignOff",
         ":semanticCommitScopeDisabled",
         "schedule:earlyMondays"
     ],
     "prHeader": "Update Request | Renovate Bot",
-    "regexManagers": [
+    "customManagers": [
         {
+            "customType": "regex",
             "fileMatch": [
                 "Pkgfile"
             ],
             "matchStrings": [
-                "# renovate: datasource=(?<datasource>.*?)(?:\\s+extractVersion=(?<extractVersion>.+?))?(?:\\s+versioning=(?<versioning>.+?))?\\s+depName=(?<depName>.+?)?\\s(?:\\s+.*_(?:version|VERSION):\\s+(?<currentValue>.*))?(?:\\s.*_(?:ref|REF):\\s+(?<currentDigest>.*))?"
+                "# renovate: datasource=(?<datasource>.*?)(?:\\s+extractVersion=(?<extractVersion>.+?))?(?:\\s+versioning=(?<versioning>.+?))?\\s+depName=(?<depName>.+?)?( registryUrl=(?<registryUrl>.*?))?\\s(?:\\s+.*_(?:version|VERSION):\\s+(?<currentValue>.*))?(?:\\s.*_(?:ref|REF):\\s+(?<currentDigest>.*))?"
             ],
             "versioningTemplate": "{{#if versioning}}{{versioning}}{{else}}semver{{/if}}"
         },
         {
+            "customType": "regex",
             "fileMatch": [
                 "Pkgfile",
                 "Makefile"
@@ -38,35 +41,35 @@
             "versioning": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)\\.?(?<patch>\\d+)?$"
         },
         {
-            "matchPackagePatterns": [
-                "*"
-            ],
             "matchDatasources": [
                 "docker"
             ],
-            "groupName": "container images"
+            "groupName": "container images",
+            "matchPackageNames": [
+                "*"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "*"
-            ],
             "matchDatasources": [
                 "go",
                 "golang-version"
             ],
-            "groupName": "go packages"
+            "groupName": "go packages",
+            "matchPackageNames": [
+                "*"
+            ]
         },
         {
-            "matchPackagePatterns": [
-                "*"
-            ],
             "matchDatasources": [
                 "git-refs",
                 "git-tags",
                 "github-tags",
                 "github-releases"
             ],
-            "groupName": "releases"
+            "groupName": "releases",
+            "matchPackageNames": [
+                "*"
+            ]
         }
     ]
 }
